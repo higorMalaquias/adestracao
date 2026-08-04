@@ -1,0 +1,215 @@
+/* ====================================
+   MENU MOBILE
+==================================== */
+
+const menuButton = document.querySelector('.menu-mobile');
+const nav = document.querySelector('.nav');
+
+if (menuButton && nav) {
+
+    menuButton.addEventListener('click', () => {
+
+        nav.classList.toggle('active');
+
+        menuButton.innerHTML =
+            nav.classList.contains('active')
+                ? '✕'
+                : '☰';
+
+    });
+
+}
+
+/* ====================================
+   FECHAR MENU AO CLICAR NO LINK
+==================================== */
+
+const navLinks = document.querySelectorAll('.nav a');
+
+navLinks.forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        nav.classList.remove('active');
+
+        if (menuButton) {
+            menuButton.innerHTML = '☰';
+        }
+
+    });
+
+});
+
+/* ====================================
+   HEADER SCROLL EFFECT
+==================================== */
+
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+
+    if (window.scrollY > 50) {
+
+        header.style.background = 'rgba(17,17,17,.98)';
+        header.style.boxShadow = '0 10px 25px rgba(0,0,0,.15)';
+
+    } else {
+
+        header.style.background = 'rgba(17,17,17,.95)';
+        header.style.boxShadow = 'none';
+
+    }
+
+});
+
+/* ====================================
+   SCROLL SUAVE
+==================================== */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener('click', function (e) {
+
+        const targetId = this.getAttribute('href');
+
+        if (targetId === '#') return;
+
+        const target = document.querySelector(targetId);
+
+        if (!target) return;
+
+        e.preventDefault();
+
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+    });
+
+});
+
+/* ====================================
+   ANIMAÇÃO AO ROLAR
+==================================== */
+
+const animatedElements = document.querySelectorAll(
+    '.card, .service-card, .step, .depoimento, .post-card, .gallery-grid img'
+);
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add('show');
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+animatedElements.forEach(element => {
+
+    element.classList.add('hidden');
+    observer.observe(element);
+
+});
+
+/* ====================================
+   BOTÃO WHATSAPP DESTACADO
+==================================== */
+
+const whatsappButton = document.querySelector('.whatsapp-float');
+
+if (whatsappButton) {
+
+    setInterval(() => {
+
+        whatsappButton.classList.add('pulse');
+
+        setTimeout(() => {
+            whatsappButton.classList.remove('pulse');
+        }, 1200);
+
+    }, 5000);
+
+}
+
+/* ====================================
+   REVELAÇÃO HERO
+==================================== */
+
+window.addEventListener('load', () => {
+
+    document.body.classList.add('loaded');
+
+});
+
+/* ====================================
+   FORMULÁRIO DE SOLICITAÇÃO WHATSAPP
+==================================== */
+
+const solicitacaoForm = document.querySelector('#solicitacao-form');
+const telefoneInput = document.querySelector('#telefone');
+
+if (telefoneInput) {
+
+    telefoneInput.addEventListener('input', (event) => {
+
+        let value = event.target.value.replace(/\D/g, '');
+
+        if (value.length > 11) {
+            value = value.slice(0, 11);
+        }
+
+        if (value.length <= 2) {
+            event.target.value = value;
+            return;
+        }
+
+        if (value.length <= 6) {
+            event.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            return;
+        }
+
+        if (value.length <= 10) {
+            event.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+            return;
+        }
+
+        event.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+
+    });
+
+}
+
+if (solicitacaoForm) {
+
+    solicitacaoForm.addEventListener('submit', (event) => {
+
+        event.preventDefault();
+
+        const nome = document.querySelector('#tutor-nome').value.trim();
+        const nomeCao = document.querySelector('#cao-nome-raca').value.trim();
+        const objetivo = document.querySelector('#objetivo').value.trim();
+        const telefone = document.querySelector('#telefone').value.trim();
+        const email = document.querySelector('#email').value.trim();
+
+        const mensagem = `Olá! Gostaria de solicitar uma avaliação.%0A%0ANome do tutor: ${encodeURIComponent(nome)}%0ANome e raça do cão: ${encodeURIComponent(nomeCao)}%0AObjetivo da avaliação: ${encodeURIComponent(objetivo)}%0ATelefone: ${encodeURIComponent(telefone)}%0AE-mail: ${encodeURIComponent(email)}`;
+
+        const numeroWhatsApp = '5511997666851';
+        const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+        window.open(url, '_blank', 'noopener,noreferrer');
+
+    });
+
+}
+
