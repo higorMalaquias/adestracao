@@ -46,21 +46,25 @@ navLinks.forEach(link => {
 
 const header = document.querySelector('.header');
 
-window.addEventListener('scroll', () => {
+if (header) {
 
-    if (window.scrollY > 50) {
+    window.addEventListener('scroll', () => {
 
-        header.style.background = 'rgba(17,17,17,.98)';
-        header.style.boxShadow = '0 10px 25px rgba(0,0,0,.15)';
+        if (window.scrollY > 50) {
 
-    } else {
+            header.style.background = 'rgba(17,17,17,.98)';
+            header.style.boxShadow = '0 10px 25px rgba(0,0,0,.15)';
 
-        header.style.background = 'rgba(17,17,17,.95)';
-        header.style.boxShadow = 'none';
+        } else {
 
-    }
+            header.style.background = 'rgba(17,17,17,.95)';
+            header.style.boxShadow = 'none';
 
-});
+        }
+
+    });
+
+}
 
 /* ====================================
    SCROLL SUAVE
@@ -153,6 +157,60 @@ window.addEventListener('load', () => {
 });
 
 /* ====================================
+   CONTADOR DE ESTATÍSTICAS
+==================================== */
+
+const counters = document.querySelectorAll('.stat-item h3');
+
+const counterObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const counter = entry.target;
+        const text = counter.innerText.trim();
+        const isPercent = text.includes('%');
+        const hasPlus = text.startsWith('+');
+        const target = Number(text.replace(/\D/g, '')) || 0;
+        let current = 0;
+
+        const duration = 1200;
+        const stepTime = Math.max(Math.floor(duration / Math.max(target, 1)), 15);
+        const increment = Math.max(Math.ceil(target / (duration / stepTime)), 1);
+
+        const formatValue = (value) => {
+            const prefix = hasPlus ? '+' : '';
+            const suffix = isPercent ? '%' : '';
+            return `${prefix}${value}${suffix}`;
+        };
+
+        const updateCounter = () => {
+
+            current += increment;
+
+            if (current >= target) {
+                counter.innerText = formatValue(target);
+                return;
+            }
+
+            counter.innerText = formatValue(current);
+            requestAnimationFrame(updateCounter);
+
+        };
+
+        updateCounter();
+        counterObserver.unobserve(counter);
+
+    });
+
+}, {
+    threshold: 0.2
+});
+
+counters.forEach(counter => counterObserver.observe(counter));
+
+/* ====================================
    FORMULÁRIO DE SOLICITAÇÃO WHATSAPP
 ==================================== */
 
@@ -208,7 +266,7 @@ if (solicitacaoForm) {
         const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
 
         window.open(url, '_blank', 'noopener,noreferrer');
-
+        alert('Redirecionando para o WhatsApp...');
     });
 
 }
