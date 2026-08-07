@@ -56,7 +56,7 @@ select {
     inset: 0 auto auto 0;
     width: 100%;
     z-index: 999;
-    background: rgba(17,17,17,.95);
+    background: rgba(0, 0, 0, 0.98);
     border-bottom: 1px solid rgba(255,255,255,.05);
     backdrop-filter: blur(12px);
 }
@@ -580,14 +580,16 @@ main {
 }
 
 .btn-primary,
-.btn-whatsapp {
+.btn-whatsapp,
+.btn-cta {
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
 
 .btn-primary::before,
-.btn-whatsapp::before {
+.btn-whatsapp::before,
+.btn-cta::before {
     content: '';
     position: absolute;
     top: 0;
@@ -600,8 +602,30 @@ main {
 }
 
 .btn-primary:hover::before,
-.btn-whatsapp:hover::before {
+.btn-whatsapp:hover::before,
+.btn-cta:hover::before {
     left: 100%;
+}
+
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #111;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 10px 25px rgba(221,182,60,.2);
+}
+
+.btn-cta:hover,
+.btn-cta:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(221,182,60,.3);
 }
 
 .processo .btn-primary {
@@ -627,87 +651,6 @@ main {
     }
 }
 
-/* ====================================
-   ESTATÍSTICAS
-==================================== */
-
-.stats {
-
-    padding: 80px 0;
-
-    background: #0f0f0f;
-
-}
-
-.stats .container {
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 30px;
-
-}
-
-.stat-item {
-
-    text-align: center;
-
-    padding: 30px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 20px;
-
-}
-
-.stat-item h3 {
-
-    color: var(--gold);
-
-    font-size: 2.5rem;
-
-    margin-bottom: 10px;
-
-}
-
-.stat-item p {
-
-    color: #ffffff;
-
-}
-
-@media (max-width: 768px) {
-
-    .stats .container {
-
-        grid-template-columns: repeat(2, 1fr);
-
-    }
-
-}
-.trust-bar{
-    background:#111;
-    padding:20px 0;
-}
-
-.trust-bar .container{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-}
-
-.trust-bar span{
-    color:#fff;
-    font-weight:600;
-}
-.whatsapp-float{
-
-    box-shadow:
-        0 0 25px rgba(37,211,102,.5);
-
-}
 
 /* ====================================
    DIFERENCIAIS
@@ -757,4 +700,19 @@ main {
 
     color: #cfcfcf;
 
+}
+
+.cta-banner {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.55)
+        ),
+        url('../img/banner.png');
+    background-size: 98%;
+    background-position: center 35%;
+    background-repeat: no-repeat;
 }

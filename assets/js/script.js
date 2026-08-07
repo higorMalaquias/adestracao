@@ -16,6 +16,7 @@ if (menuButton && nav) {
                 ? '✕'
                 : '☰';
 
+
     });
 
 }
@@ -48,21 +49,8 @@ const header = document.querySelector('.header');
 
 if (header) {
 
-    window.addEventListener('scroll', () => {
-
-        if (window.scrollY > 50) {
-
-            header.style.background = 'rgba(17,17,17,.98)';
-            header.style.boxShadow = '0 10px 25px rgba(0,0,0,.15)';
-
-        } else {
-
-            header.style.background = 'rgba(17,17,17,.95)';
-            header.style.boxShadow = 'none';
-
-        }
-
-    });
+    header.style.background = 'rgba(0, 0, 0, 0.98)';
+    header.style.boxShadow = 'none';
 
 }
 
@@ -78,11 +66,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         if (targetId === '#') return;
 
+        e.preventDefault();
+
+        if (targetId === '#inicio') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+
         const target = document.querySelector(targetId);
 
         if (!target) return;
-
-        e.preventDefault();
 
         target.scrollIntoView({
             behavior: 'smooth',
@@ -254,19 +250,22 @@ if (solicitacaoForm) {
 
         event.preventDefault();
 
-        const nome = document.querySelector('#tutor-nome').value.trim();
-        const nomeCao = document.querySelector('#cao-nome-raca').value.trim();
-        const objetivo = document.querySelector('#objetivo').value.trim();
-        const telefone = document.querySelector('#telefone').value.trim();
-        const email = document.querySelector('#email').value.trim();
+        const nome = document.querySelector('#tutor-nome')?.value?.trim() || 'Não informado';
+        const nomeCao = document.querySelector('#cao-nome-raca')?.value?.trim() || 'Não informado';
+        const objetivo = document.querySelector('#objetivo')?.value?.trim() || 'Não informado';
+        const telefone = document.querySelector('#telefone')?.value?.trim() || 'Não informado';
+        const email = document.querySelector('#email')?.value?.trim() || 'Não informado';
 
         const mensagem = `Olá! Gostaria de solicitar uma avaliação.%0A%0ANome do tutor: ${encodeURIComponent(nome)}%0ANome e raça do cão: ${encodeURIComponent(nomeCao)}%0AObjetivo da avaliação: ${encodeURIComponent(objetivo)}%0ATelefone: ${encodeURIComponent(telefone)}%0AE-mail: ${encodeURIComponent(email)}`;
 
         const numeroWhatsApp = '5511997666851';
         const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
 
-        window.open(url, '_blank', 'noopener,noreferrer');
-        alert('Redirecionando para o WhatsApp...');
+        const novaJanela = window.open(url, '_blank', 'noopener,noreferrer');
+
+        if (!novaJanela) {
+            window.location.href = url;
+        }
     });
 
 }
