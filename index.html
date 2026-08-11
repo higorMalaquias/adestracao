@@ -631,15 +631,25 @@ content="website">
                     </div>
 
                     <div>
-                        <label for="telefone" style="display: block; margin-bottom: 0.4rem; font-weight: 600;">Número de telefone para contato</label>
-                        <input id="telefone" name="telefone" type="tel" placeholder="(11) 99999-9999" required style="width: 100%; padding: 0.9rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.04); color: #fff;">
-                    </div>
-
-                    <div>
                         <label for="email" style="display: block; margin-bottom: 0.4rem; font-weight: 600;">E-mail</label>
                         <input id="email" name="email" type="email" placeholder="seuemail@email.com" required style="width: 100%; padding: 0.9rem 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.04); color: #fff;">
                     </div>
 
+
+                    <div class="lgpd-checkbox" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                    <input
+                    type="checkbox"
+                    id="aceite-lgpd"
+                    required
+    >
+
+                <label for="aceite-lgpd">
+                    Concordo com o tratamento dos meus dados para contato e elaboração de orçamento, conforme a
+                    <a href="politica-privacidade.html" target="_blank">
+                        Política de Privacidade
+                    </a>.
+    </label>
+                    
                     <button type="submit" class="btn-primary" style="border: none; cursor: pointer; width: fit-content;">
                         Enviar solicitação
                     </button>
@@ -662,7 +672,7 @@ content="website">
                         Atendemos em:
                     </p>
                     <ul>
-                        <li>Jandira, Barueri, Itapevi, Osasco e em toda a cidade de São Paulo.</li>
+                        <li>todas as cidades de São Paulo.</li>
                                               
                     </ul>
 
@@ -745,6 +755,12 @@ content="website">
             © 2026 - Luiz Adestramento
         </p>
 
+        <p class="footer-links">
+    <a href="politica-privacidade.html">
+        Política de Privacidade
+    </a>
+</p>
+
         <p>
             São Paulo, SP - Brasil
         </p>
@@ -758,27 +774,17 @@ content="website">
 </section>
     <!-- BOTÃO FLUTUANTE -->
 
-    <a href="https://wa.me/5511997666851"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="whatsapp-float"
-        aria-label="WhatsApp">
+<a href="https://wa.me/5511997666851"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-float"
+   aria-label="Fale conosco pelo WhatsApp">
 
-        <svg class="paw-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true" focusable="false">
-            <!-- toes: two top ovals and two side ovals -->
-            <ellipse cx="26" cy="10" rx="6" ry="9" fill="#ffffff" />
-            <ellipse cx="38" cy="10" rx="6" ry="9" fill="#ffffff" />
-            <ellipse cx="16" cy="20" rx="5" ry="7" fill="#ffffff" />
-            <ellipse cx="48" cy="20" rx="5" ry="7" fill="#ffffff" />
-            <!-- central pad -->
-            <path d="M18 42 C18 50 26 58 32 58 C38 58 46 50 46 42 C46 36 40 30 32 30 C24 30 18 36 18 42 Z" fill="#ffffff" />
-        </svg>
-        <svg class="wa-tail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 24" width="40" height="24" aria-hidden="true" focusable="false">
-            <!-- white triangle (biquinho) -->
-            <path d="M32 22 L20 4 L8 22 Z" fill="#ffffff" />
-        </svg>
+    <img src="assets/img/whatsapp-pata.png"
+         alt=""
+         class="whatsapp-icon">
 
-    </a>
+</a>
 
     <script src="assets/js/script.js"></script>
 
