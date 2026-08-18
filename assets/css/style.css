@@ -29,6 +29,11 @@ body {
     line-height: 1.75;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -999,7 +1004,69 @@ main {
         transform 0.3s ease,
         filter 0.3s ease;
 }
+/* =========================================
+   TOOLTIP WHATSAPP
+========================================= */
 
+.whatsapp-tooltip {
+
+    position: absolute;
+
+    right: 75px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: #25D366;
+    color: #fff;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .25s ease;
+
+    box-shadow: 0 8px 20px rgba(37,211,102,.35);
+
+    pointer-events: none;
+}
+
+/* Setinha */
+
+.whatsapp-tooltip::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -6px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+
+    border-left: 6px solid #25D366;
+}
+
+/* Hover */
+
+.whatsapp-float:hover .whatsapp-tooltip {
+
+    opacity: 1;
+    visibility: visible;
+
+    right: 85px;
+}
 /* Ícone */
 .whatsapp-float::after {
     content: "";
@@ -1127,4 +1194,231 @@ main {
 
 .lgpd-checkbox a:hover {
     text-decoration: underline;
+}
+
+/* =========================================
+   AJUSTES MOBILE EXTRA
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Header */
+    .logo img {
+        width: 220px;
+        max-height: 80px;
+    }
+
+    main {
+        padding-top: 6rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 8rem 0 4rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    /* Seções */
+    .problemas,
+    .servicos,
+    .sobre,
+    .processo,
+    .galeria,
+    .depoimentos,
+    .dicas,
+    .contato,
+    .diferenciais {
+        padding: 4rem 0;
+    }
+
+    /* Títulos */
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-title p {
+        font-size: 0.95rem;
+    }
+
+    /* Cards */
+    .card,
+    .service-card,
+    .step,
+    .depoimento,
+    .post-card {
+        padding: 1.5rem;
+    }
+
+    /* Sobre */
+    .sobre-content {
+        gap: 2rem;
+    }
+
+    .sobre-image img {
+        max-width: 100%;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+        min-height: 350px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .cta-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-banner p {
+        font-size: 1rem;
+    }
+
+    /* Contato */
+    .contato-content {
+        gap: 1.5rem;
+    }
+
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+
+    .container {
+        width: calc(100% - 1.5rem);
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: .95rem;
+    }
+
+    .badge {
+        font-size: .85rem;
+        padding: .6rem .9rem;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-whatsapp,
+    .btn-cta {
+        width: 100%;
+    }
+
+    .gallery-grid img {
+        height: 220px;
+    }
+
+    .service-content {
+        padding: 20px;
+    }
+
+    .service-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .service-content p {
+        font-size: .9rem;
+    }
+}
+/* =========================================
+   COMO FUNCIONA - NOVO ESTILO
+========================================= */
+
+.processo-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+
+    padding: 25px;
+
+    text-align: left;
+    min-height: auto;
+
+    transition: .3s;
+}
+
+.step:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.step span {
+    min-width: 70px;
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(221,182,60,.15);
+
+    color: var(--accent);
+
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.step-content h3 {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .step span {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        font-size: 1.1rem;
+    }
 }
