@@ -1346,79 +1346,97 @@ main {
 ========================================= */
 
 .processo-grid {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 25px;
+    position: relative;
+    margin-top: 60px;
+}
+
+/* linha ligando */
+
+.processo-grid::before {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: rgba(221,182,60,.25);
+    z-index: 0;
 }
 
 .step {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 20px;
-
-    padding: 25px;
-
-    text-align: left;
-    min-height: auto;
-
-    transition: .3s;
-}
-
-.step:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
+    position: relative;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: center;
+    z-index: 1;
 }
 
 .step span {
-    min-width: 70px;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    margin: 0 auto 20px;
+
     border-radius: 50%;
 
-    background: rgba(221,182,60,.15);
+    background: #181818;
+
+    border: 3px solid var(--accent);
 
     color: var(--accent);
 
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
-.step-content h3 {
-    margin: 0 0 10px;
-    color: var(--accent);
-    font-size: 1.3rem;
+.step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #fff;
 }
 
-.step-content p {
-    margin: 0;
+.step p {
+    font-size: .95rem;
     color: var(--muted);
+    line-height: 1.6;
 }
 
 /* MOBILE */
-
 @media (max-width: 768px) {
 
+    .processo-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .processo-grid::before {
+        left: 44px;
+        top: 0;
+        width: 3px;
+        height: 100%;
+    }
+
     .step {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        text-align: left;
     }
 
     .step span {
-        width: 60px;
-        height: 60px;
-        min-width: 60px;
-        font-size: 1.1rem;
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        margin: 0;
+        font-size: 1.4rem;
     }
 }
