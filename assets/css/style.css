@@ -1746,3 +1746,28 @@ main {
         font-size: 1.4rem;
     }
 }
+
+/* =========================================
+   BOTÃO ENVIAR SOLICITAÇÃO - MOBILE
+========================================= */
+
+#solicitacao-form .btn-primary {
+    width: fit-content;
+    max-width: 100%;
+    white-space: nowrap;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+
+    #solicitacao-form .btn-primary {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+
+}
