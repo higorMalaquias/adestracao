@@ -247,6 +247,312 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+/* =========================================
+   PROBLEMAS - CARDS PREMIUM
+========================================= */
+
+.problemas-grid .card {
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem 1.5rem;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    border: 1px solid rgba(221,182,60,.12);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    color: #f2f2f2;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        box-shadow .4s ease,
+        background .4s ease;
+
+    cursor: default;
+}
+
+
+/* brilho interno */
+
+.problemas-grid .card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -40%;
+
+    width: 180%;
+    height: 180%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(221,182,60,.12) 0%,
+            rgba(221,182,60,.04) 25%,
+            transparent 60%
+        );
+
+    opacity: 0;
+
+    transition:
+        opacity .5s ease,
+        transform .6s ease;
+
+    pointer-events: none;
+}
+
+
+/* linha dourada superior */
+
+.problemas-grid .card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(221,182,60,.65),
+            transparent
+        );
+
+    opacity: .35;
+
+    transition:
+        opacity .4s ease,
+        width .4s ease;
+}
+
+
+/* conteúdo */
+
+.problemas-grid .card {
+
+    font-weight: 500;
+    letter-spacing: .1px;
+}
+
+
+/* hover */
+
+.problemas-grid .card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(221,182,60,.5);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(221,182,60,.08),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.42),
+        0 0 30px rgba(221,182,60,.08),
+        inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.problemas-grid .card:hover .problema-icon {
+
+    transform: translateY(-3px) scale(1.08);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(221,182,60,.28),
+            rgba(221,182,60,.06)
+        );
+
+    box-shadow:
+        0 0 20px rgba(221,182,60,.15);
+
+}
+
+
+/* ativa o brilho */
+
+.problemas-grid .card:hover::before {
+
+    opacity: 1;
+
+    transform: translate(8%, 8%) scale(1.05);
+}
+
+
+/* destaca a linha dourada */
+
+.problemas-grid .card:hover::after {
+
+    opacity: 1;
+
+    width: 85%;
+}
+
+
+/* =========================================
+   PAW / EMOJI
+========================================= */
+
+.problemas-grid .card::first-letter {
+
+    color: var(--accent);
+}
+
+
+/* =========================================
+   ANIMAÇÃO DE ENTRADA
+========================================= */
+
+.problemas-grid .card {
+
+    opacity: 0;
+    transform: translateY(25px);
+
+    animation: problemaCardIn .7s ease forwards;
+}
+
+.problemas-grid .card:nth-child(1) {
+    animation-delay: .05s;
+}
+
+.problemas-grid .card:nth-child(2) {
+    animation-delay: .10s;
+}
+
+.problemas-grid .card:nth-child(3) {
+    animation-delay: .15s;
+}
+
+.problemas-grid .card:nth-child(4) {
+    animation-delay: .20s;
+}
+
+.problemas-grid .card:nth-child(5) {
+    animation-delay: .25s;
+}
+
+.problemas-grid .card:nth-child(6) {
+    animation-delay: .30s;
+}
+
+.problemas-grid .card:nth-child(7) {
+    animation-delay: .35s;
+}
+
+
+@keyframes problemaCardIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .problemas-grid .card {
+
+        min-height: 125px;
+
+        padding: 1.5rem 1rem;
+
+        border-radius: 18px;
+
+    }
+
+    .problemas-grid .card:hover {
+
+        transform: translateY(-4px);
+
+    }
+
+}
+
+.problema-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 14px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(221,182,60,.18),
+            rgba(221,182,60,.04)
+        );
+
+    border: 1px solid rgba(221,182,60,.25);
+
+    font-size: 1.35rem;
+
+    filter:
+        drop-shadow(0 0 8px rgba(221,182,60,.18));
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+}
+
+.problemas-grid .card {
+
+    flex-direction: column;
+    gap: 4px;
+
+}
+
 .card,
 .service-card,
 .step,
