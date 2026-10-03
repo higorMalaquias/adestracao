@@ -1072,16 +1072,28 @@ main {
 
 }
 
+@media (max-width: 768px) {
+
+    .diferenciais-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .diferenciais .card {
+        min-height: 180px;
+        padding: 1.2rem;
+    }
+
+}
+
 .diferenciais .card {
+    min-height: 220px;
+}
 
-    min-height: 240px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
+@media (max-width: 768px) {
+    .diferenciais .card {
+        min-height: auto;
+    }
 }
 
 .diferenciais .card h3 {
