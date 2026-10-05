@@ -1,0 +1,22 @@
+# Variáveis de ambiente
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
